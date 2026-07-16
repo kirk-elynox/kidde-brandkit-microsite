@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--
+  BRAND KIT — Kidde Global Solutions (KGS)
+  client: Kidde (KGS)  ·  scope: Core  ·  version: v1  ·  date: 2026-07-16
+  source run: client-initialization Phase 6  ·  source: https://www.kidde.com/ (live-site computed-style extraction)
+  approximated/derived tokens: --k-red-deep (#8E1D22) is [derived] (hover shade, not on-page);
+    logo is a RECONSTRUCTION stand-in (official vector not obtained); Proxima Nova rendered via Montserrat substitute.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kidde — Brand Kit v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ===== KIDDE CANONICAL TOKEN BLOCK (read by microsite-delivery) ===== */
+  --k-red:        #AC242A;  /* primary brand / CTA / energy — evidenced (26 text, 16 bg, 6 button) */
+  --k-red-deep:   #8E1D22;  /* [derived] hover/depth — one shade darker, confirm at gate */
+  --k-ink:        #000000;  /* primary text / foundation — 343 uses */
+  --k-white:      #FFFFFF;  /* surface / reversed text */
+  --k-gray:       #747574;  /* secondary text — 55 uses */
+  --k-panel:      #F8F8F8;  /* light panel background */
+  --k-panel-2:    #F7F8F9;  /* subtle panel / button */
+  --k-line:       #E4E4E4;  /* [derived] hairline border for surfaces */
+  /* type */
+  --k-font-display: 'Montserrat', system-ui, sans-serif; /* renders in place of brand face Proxima Nova */
+  --k-font-body:    'Montserrat', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--k-font-body);color:var(--k-ink);background:var(--k-white);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--k-red)}
+h1,h2,h3{font-family:var(--k-font-display);font-weight:800;line-height:1.1;color:var(--k-ink)}
+section{padding:64px 0;border-bottom:1px solid var(--k-line)}
+.sec-title{font-size:30px;margin:8px 0 6px}
+.sec-sub{color:var(--k-gray);max-width:640px;margin-bottom:32px}
+
+/* hero */
+.hero{background:var(--k-panel);border-bottom:4px solid var(--k-red)}
+.hero-inner{padding:72px 0 60px}
+.hero h1{font-size:52px;color:var(--k-red);max-width:9ch}
+.hero p{margin-top:16px;max-width:520px;color:var(--k-ink)}
+.hero .meta{margin-top:24px;font-size:13px;color:var(--k-gray)}
+.badgebar{background:var(--k-red);color:#fff;text-align:center;padding:16px;font-weight:700;font-size:15px}
+.badgebar small{display:block;font-weight:500;opacity:.9;font-size:11px;margin-top:2px}
+
+/* color grid */
+.swgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.sw{border:1px solid var(--k-line);border-radius:10px;overflow:hidden;background:#fff}
+.sw .chip{height:92px}
+.sw .body{padding:12px 14px}
+.sw .name{font-weight:700;font-size:14px}
+.sw .hex{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--k-gray);margin-top:2px}
+.sw .role{font-size:11px;color:var(--k-gray);margin-top:6px;line-height:1.4}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:4px;background:#FBEAEA;color:var(--k-red);margin-top:8px}
+
+/* type */
+.type-row{padding:16px 0;border-top:1px solid var(--k-line)}
+.type-row:first-child{border-top:none}
+.type-label{font-size:11px;color:var(--k-gray);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.disp{font-size:44px;font-weight:800;line-height:1.05}
+.h-spec{font-size:28px;font-weight:700}
+.b-spec{font-size:16px;font-weight:400}
+.note{background:var(--k-panel-2);border-left:3px solid var(--k-red);padding:12px 16px;border-radius:0 8px 8px 0;font-size:13px;color:#333;margin-top:20px}
+
+/* logo */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.logo-tile{border:1px solid var(--k-line);border-radius:10px;padding:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:150px}
+.logo-tile.dark{background:var(--k-ink)}
+.logo-tile.red{background:var(--k-red)}
+.logo-cap{font-size:11px;color:var(--k-gray);text-transform:uppercase;letter-spacing:.08em}
+.logo-tile.dark .logo-cap,.logo-tile.red .logo-cap{color:rgba(255,255,255,.7)}
+.lockup{display:flex;align-items:center;gap:10px}
+.wordmark{font-family:var(--k-font-display);font-weight:800;font-size:26px;letter-spacing:.02em;text-transform:uppercase}
+
+/* components */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{border:1px solid var(--k-line);border-radius:12px;padding:22px;background:#fff}
+.btn{display:inline-block;font-family:var(--k-font-display);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:14px;padding:14px 26px;border-radius:8px;border:2px solid var(--k-red);cursor:pointer}
+.btn-primary{background:var(--k-red);color:#fff}
+.btn-ghost{background:#fff;color:var(--k-red)}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:#FBEAEA;color:var(--k-red)}
+.stat{font-family:var(--k-font-display);font-size:40px;font-weight:800;color:var(--k-red);line-height:1}
+.stat-l{font-size:12px;color:var(--k-gray);text-transform:uppercase;letter-spacing:.08em;margin-top:6px}
+.voice-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.voice-cols h4{font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.voice-cols .do{color:#1a7a3c}.voice-cols .dont{color:var(--k-red)}
+.voice-cols ul{list-style:none}.voice-cols li{padding:4px 0;font-size:14px;border-top:1px solid var(--k-line)}
+.quote{font-family:var(--k-font-display);font-weight:700;font-size:20px;color:var(--k-ink);border-left:4px solid var(--k-red);padding-left:16px;margin:6px 0}
+.footer{padding:36px 0;color:var(--k-gray);font-size:12px}
+@media(max-width:640px){
+  .hero h1{font-size:36px}.disp{font-size:32px}.sec-title{font-size:24px}
+  .voice-cols{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="badgebar" role="banner">Kidde Brand Kit · v1 · Core
+  <small>Extracted from kidde.com — internal reference for the Elynox engagement. Not an official Kidde asset.</small>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Brand Kit — Kidde Global Solutions</div>
+    <h1>Find Peace of Mind.</h1>
+    <p>A living reference for Kidde's color, type, logo, and voice, extracted from kidde.com so the engagement's client-facing surfaces render in Kidde's own brand, not a generic template.</p>
+    <div class="meta">Source: kidde.com · Scope: Core · Built 2026-07-16 · “North America’s #1 home fire safety brand”</div>
+  </div>
+</header>
+
+<!-- COLOR -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">01 — Color</div>
+    <h2 class="sec-title">Color System</h2>
+    <p class="sec-sub">Kidde red carries the brand; black and white do the work; grays and light panels give it room to breathe. Every hex was read from computed styles on kidde.com.</p>
+    <div class="swgrid">
+      <div class="sw"><div class="chip" style="background:#AC242A"></div><div class="body"><div class="name">Kidde Red</div><div class="hex">#AC242A</div><div class="role">Primary brand · CTA · energy. The signature.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8E1D22"></div><div class="body"><div class="name">Red Deep</div><div class="hex">#8E1D22</div><div class="role">Hover / depth for red surfaces.</div><span class="tag">derived</span></div></div>
+      <div class="sw"><div class="chip" style="background:#000000"></div><div class="body"><div class="name">Ink Black</div><div class="hex">#000000</div><div class="role">Primary text · section headers.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#747574"></div><div class="body"><div class="name">Slate Gray</div><div class="hex">#747574</div><div class="role">Secondary text.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #E4E4E4"></div><div class="body"><div class="name">White</div><div class="hex">#FFFFFF</div><div class="role">Surface · reversed text.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F8F8F8"></div><div class="body"><div class="name">Panel Gray</div><div class="hex">#F8F8F8</div><div class="role">Light section panels.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F7F8F9"></div><div class="body"><div class="name">Panel Gray 2</div><div class="hex">#F7F8F9</div><div class="role">Subtle panels / soft buttons.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">02 — Typography</div>
+    <h2 class="sec-title">Typography</h2>
+    <p class="sec-sub">Kidde sets everything in <strong>Proxima Nova</strong>, a geometric sans, bold for headlines and regular for body.</p>
+    <div class="type-row"><div class="type-label">Display / Headline — 700–800</div><div class="disp">Find Peace of Mind</div></div>
+    <div class="type-row"><div class="type-label">Section Heading — 700</div><div class="h-spec">Complete Fire Safety Packages</div></div>
+    <div class="type-row"><div class="type-label">Body — 400 / 1.6</div><div class="b-spec">You can’t see or smell carbon monoxide, so our advanced alarms look out for this hidden danger and give your family time to get to fresh air fast.</div></div>
+    <div class="type-row"><div class="type-label">Eyebrow / Label — 700 uppercase, tracked</div><div class="eyebrow">Residential · Professional · Shop</div></div>
+    <div class="note"><strong>Rendering note:</strong> the Kidde brand face is <strong>Proxima Nova</strong> (a commercial/Adobe-Typekit family not available on Google Fonts). This kit renders in <strong>Montserrat</strong> as the closest free stand-in so the kit is self-contained; production surfaces should license and use Proxima Nova.</div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">03 — Logo &amp; Marks</div>
+    <h2 class="sec-title">Logo &amp; Marks</h2>
+    <p class="sec-sub">The red flame badge sits left of the uppercase wordmark. The mark below is a <strong>reconstruction stand-in</strong> — recolorable across variants — because the official vector was not obtained from the site.</p>
+    <div class="logo-grid">
+      <div class="logo-tile">
+        <div class="lockup">
+          <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Kidde flame mark (reconstruction)">
+            <rect x="1" y="1" width="38" height="38" rx="8" fill="#AC242A"/>
+            <path d="M20 8 C21 14 27 15 24 22 C27 21 27 17 27 17 C30 22 28 30 20 31 C12 30 11 22 15 18 C15 21 17 22 18 22 C15 16 19 12 20 8 Z" fill="#FFFFFF"/>
+          </svg>
+          <span class="wordmark" style="color:#000">KIDDE</span>
+        </div>
+        <div class="logo-cap">Primary — on light</div>
+      </div>
+      <div class="logo-tile dark">
+        <div class="lockup">
+          <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Kidde flame mark reversed">
+            <rect x="1" y="1" width="38" height="38" rx="8" fill="#AC242A"/>
+            <path d="M20 8 C21 14 27 15 24 22 C27 21 27 17 27 17 C30 22 28 30 20 31 C12 30 11 22 15 18 C15 21 17 22 18 22 C15 16 19 12 20 8 Z" fill="#FFFFFF"/>
+          </svg>
+          <span class="wordmark" style="color:#fff">KIDDE</span>
+        </div>
+        <div class="logo-cap">Reversed — on dark</div>
+      </div>
+      <div class="logo-tile red">
+        <div class="lockup">
+          <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Kidde flame mark mono on red">
+            <rect x="1" y="1" width="38" height="38" rx="8" fill="#FFFFFF"/>
+            <path d="M20 8 C21 14 27 15 24 22 C27 21 27 17 27 17 C30 22 28 30 20 31 C12 30 11 22 15 18 C15 21 17 22 18 22 C15 16 19 12 20 8 Z" fill="#AC242A"/>
+          </svg>
+          <span class="wordmark" style="color:#fff">KIDDE</span>
+        </div>
+        <div class="logo-cap">Mono — on brand red</div>
+      </div>
+    </div>
+    <div class="note"><strong>Reconstruction:</strong> this mark approximates Kidde's red flame/badge for internal layout use only. Request the official logo files from Kidde before any external delivery. Keep clear space ≥ the badge height; never recolor the wordmark to non-brand colors.</div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">04 — Voice &amp; Tone</div>
+    <h2 class="sec-title">Voice &amp; Tone</h2>
+    <p class="sec-sub">Plain, direct, and protective. Kidde speaks to the family, leads with the benefit, and backs claims with substantiation.</p>
+    <div class="quote">“Find Peace of Mind with the Latest CO Detection”</div>
+    <div class="quote">“North America’s #1 home fire safety brand” <span style="font-weight:500;font-size:13px;color:var(--k-gray)">*Based on total household installations as of December 2023.</span></div>
+    <div class="voice-cols" style="margin-top:24px">
+      <div><h4 class="do">Do</h4><ul>
+        <li>Lead with the benefit to the family.</li>
+        <li>Use plain, second-person language (“your family”).</li>
+        <li>Substantiate claims with a footnote.</li>
+        <li>Keep CTAs short, uppercase, and active.</li>
+      </ul></div>
+      <div><h4 class="dont">Don’t</h4><ul>
+        <li>Use fear without the reassurance that follows.</li>
+        <li>Bury the point in jargon.</li>
+        <li>Make a “#1” claim without the basis.</li>
+        <li>Dilute the red by overusing it as background.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="eyebrow">05 — Components Starter</div>
+    <h2 class="sec-title">Components Starter</h2>
+    <p class="sec-sub">The minimum set the microsite reuses: buttons, pills, stat tiles, cards, and the red trust band.</p>
+    <div class="comp-grid">
+      <div class="card"><div class="logo-cap" style="margin-bottom:12px">Buttons</div><a class="btn btn-primary">Explore Now</a><div style="height:12px"></div><a class="btn btn-ghost">Learn More</a></div>
+      <div class="card"><div class="logo-cap" style="margin-bottom:12px">Pills</div><span class="pill">Residential</span> <span class="pill">Professional</span></div>
+      <div class="card"><div class="stat">#1</div><div class="stat-l">Home fire safety brand</div></div>
+      <div class="card"><div class="logo-cap" style="margin-bottom:8px">Card</div><div style="font-weight:700">Complete Fire Safety Package</div><div style="font-size:13px;color:var(--k-gray);margin-top:4px">Whole-home protection homeowners and renters need.</div></div>
+    </div>
+    <div class="badgebar" style="margin-top:24px;border-radius:10px">North America’s #1 home fire safety brand<small>The red trust band — a Kidde signature device.</small></div>
+  </div>
+</section>
+
+<div class="footer"><div class="wrap">Kidde Brand Kit v1 (Core) · extracted from kidde.com on 2026-07-16 · internal Elynox engagement reference · colors are exact computed-style reads; red-deep is derived; logo is a reconstruction stand-in; Proxima Nova rendered via Montserrat.</div></div>
+
+</body>
+</html>
