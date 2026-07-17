@@ -306,12 +306,14 @@ export default function BrandKitPage() {
             </div>
             <div className="rounded-xl border border-brand-line bg-white p-5">
               <div className="mb-3 text-[11px] uppercase tracking-[0.08em] text-brand-slate">Pills</div>
-              <span className="mr-2 inline-block rounded-full bg-[#FBEAEA] px-3 py-1.5 text-xs font-bold text-brand-red">
-                Residential
-              </span>
-              <span className="inline-block rounded-full bg-[#FBEAEA] px-3 py-1.5 text-xs font-bold text-brand-red">
-                Professional
-              </span>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-block rounded-full bg-[#FBEAEA] px-3 py-1.5 text-xs font-bold text-brand-red">
+                  Residential
+                </span>
+                <span className="inline-block rounded-full bg-[#FBEAEA] px-3 py-1.5 text-xs font-bold text-brand-red">
+                  Professional
+                </span>
+              </div>
             </div>
             <div className="rounded-xl border border-brand-line bg-white p-5">
               <div className="text-4xl font-extrabold leading-none text-brand-red">#1</div>
