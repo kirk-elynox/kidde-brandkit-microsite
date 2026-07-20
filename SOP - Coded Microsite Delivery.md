@@ -5,7 +5,7 @@ tags: [sop, coded-microsite-delivery, nextjs, tailwind, microsite-delivery]
 status: draft
 aliases: ["Coded Microsite Port", "Next.js Microsite Delivery"]
 related: ["[[Standard Work - Coded Microsite Delivery]]", "[[Quality Rubric - Coded Microsite Delivery]]", "[[Template - Coded Microsite Delivery Skeleton]]", "[[SOP - Microsite Delivery]]"]
-source: "Session transcript — Kidde brand-kit-microsite Next.js port, 2026-07-16"
+source: "Session transcript — Kidde brand-kit-microsite Next.js port, 2026-07-16; cross-checked against the live 'SOP - SOP and Standard Work Codification' task (ClickUp #86e22fu7b)"
 date created: 2026-07-16
 date modified: 2026-07-16
 ---
@@ -13,6 +13,8 @@ date modified: 2026-07-16
 # SOP: Coded Microsite Delivery
 
 ## Overview
+
+A Microsite Delivery run (per [[SOP - Microsite Delivery]]) produces one self-contained HTML file. Some engagements need more than that file can give — shared components across several pages, real interactivity, or a codebase the client's own team can extend. This SOP is what runs *after* that HTML file is approved, to turn it into a real Next.js + Tailwind app without re-deciding the tooling, the token strategy, or the component shape from zero each time.
 
 **Estimated time:** 2–4 hours for a first port of a Brand Kit + one Microsite deliverable; ~30–60 min to add a further deliverable to an already-scaffolded project.
 
@@ -24,7 +26,7 @@ date modified: 2026-07-16
 
 ---
 
-## Phase 0: Prerequisite Gate (pre-flight)
+## Phase 0: Prerequisite Gate (pre-flight, 15–30 min)
 
 The port renders decisions already made upstream. Do not start until they exist.
 
@@ -36,9 +38,9 @@ Confirm at least one single-file HTML deliverable (Brand Kit and/or Microsite) h
 
 ### Step 0.2 — Locate a reference coded-scaffold project *(pre-flight blocker for structure)*
 
-Find an existing Next.js + Tailwind project already built on this pattern — config files plus a `components/ui` primitive library. If none exists, this SOP does not apply; scaffolding a pattern from zero is a different, undocumented process.
+Find an existing Next.js + Tailwind project already built on this pattern — config files plus a `components/ui` primitive library. Read its `package.json`, `tailwind.config.ts`, and component list before touching anything. If none exists, this SOP does not apply; scaffolding a pattern from zero is a different, undocumented process.
 
-**Exit test:** the reference project's `package.json`, `tailwind.config.ts`, and component file list have been read.
+**Exit test:** the reference project's config files and component set have been read and understood, not just located.
 
 ### Step 0.3 — Confirm the token source *(pre-flight blocker for brand fidelity)*
 
@@ -46,11 +48,11 @@ Confirm a Brand DNA Extract (or equivalent) exists: a document giving exact hex 
 
 **Exit test:** token source located; every color/font entry has a hex (or named substitute), a role, and a fidelity note.
 
-### Step 0.4 — Confirm environment
+### Step 0.4 — Confirm environment and working branch
 
-Node.js + npm available. No port conflicts from a prior session's dev server.
+Node.js + npm available. No port conflicts from a prior session's dev server. If the target repo's default branch already matches its remote (nothing to branch off from), create a feature branch before starting work rather than committing directly to the tracked default branch.
 
-**Exit test:** `node -v` / `npm -v` return versions; `ps aux | grep next-server` shows no orphaned process holding the target port.
+**Exit test:** `node -v` / `npm -v` return versions; `ps aux | grep next-server` shows no orphaned process holding the target port; the active git branch is not the one a later PR would need as its own base.
 
 ---
 
@@ -88,13 +90,15 @@ For `Logo`: if the client has no official vector asset, build a labelled reconst
 
 ## Phase 4: Port Each HTML Deliverable to a Route (30–90 min per deliverable)
 
-Create one route per source HTML file (e.g. `app/proposal/page.tsx`, `app/brandkit/page.tsx`).
+Create one route per source HTML file (e.g. `app/proposal/page.tsx`, `app/brandkit/page.tsx`). Deliverables can be ported one at a time as they're requested — a project scaffolded for one deliverable doesn't need to be re-scaffolded to add a second; Phases 1–3 run once per project, Phase 4 runs once per deliverable.
 
 Extract every piece of copy, every number, and the full structure into typed data arrays / JSX — verbatim from the source, never paraphrased. Cross-check section by section against the source file.
 
 Map every inline CSS value (colors, spacing, borders) to Phase 2 tokens. Where the source uses a literal pixel value with no clean Tailwind-scale match (e.g. `padding: 14px 26px`), use arbitrary-value syntax (`px-[26px]`) — don't guess a decimal utility class. Tailwind's default spacing scale only defines `.5` increments at 0.5 / 1.5 / 2.5 / 3.5; a value like `px-6.5` or `gap-4.5` compiles with *no error and no effect*, silently dropping the padding/gap entirely.
 
-**Exit test:** a side-by-side text diff of the rendered route against the source HTML shows no missing or altered copy; no hardcoded hex colors introduced.
+Where a group of inline elements (pills, tags, badges) sits inside a narrow container, don't rely on a one-directional margin (`mr-2`) between them — at some viewport width the group will wrap, and a margin set on only one axis leaves the wrapped items touching with zero gap. Wrap the group in a flex container with `gap-2` (or similar) instead; a gap applies correctly on both axes regardless of wrap state.
+
+**Exit test:** a side-by-side text diff of the rendered route against the source HTML shows no missing or altered copy; no hardcoded hex colors introduced; any inline-element group that can wrap has been checked at a narrow viewport, not only a wide one.
 
 ---
 
@@ -116,7 +120,7 @@ Check for and stop any stray `next-server` process on the target port before sta
 
 Verify rendered content two ways, not one:
 1. Extract the page's full text and diff it against the source content.
-2. Read computed styles (`getComputedStyle`) on any element whose class was hand-written for spacing or color, to confirm the intended CSS actually applied.
+2. Read computed styles (`getComputedStyle`) on any element whose class was hand-written for spacing or color, or any element in a group that can wrap (see Phase 4), to confirm the intended CSS actually applied — including at a narrow viewport / after wrapping, not only in the first layout you happen to see.
 
 Click through every interactive path using element references from the accessibility tree (`read_page` → click by ref), not eyeballed screenshot coordinates — coordinate clicks miss when the screenshot's pixel space doesn't match the live viewport.
 
@@ -134,17 +138,17 @@ Wire internal navigation between the ported routes (a logo mark linking home, CT
 
 ---
 
-## Phase 8: Deliver, Persist & Record (10 min)
+## Phase 8: Deliver, Persist & Record (10–15 min)
 
-Stop the dev server. Report exactly which files were created or changed, and what was verified versus what could not be checked (e.g. a tool limitation) — never claim a check happened if it didn't.
+Stop the dev server. If the working branch already tracks the client repo's default branch (see Step 0.4), create a feature branch, commit, push, and open a PR rather than pushing straight to the default branch. Report exactly which files were created or changed, and what was verified versus what could not be checked (e.g. a tool limitation) — never claim a check happened if it didn't.
 
-**Exit test:** requester has an accurate file list and verification summary; the dev server is not left running.
+**Exit test:** requester has an accurate file list and verification summary, and — where relevant — a PR link; the dev server is not left running.
 
 ---
 
-## Phase 9: Log & CI (5 min)
+## Phase 9: Log & CI (5–10 min)
 
-Note the run (source deliverable(s) ported, routes created, any deltas from this SOP) in the project's session log or `CLAUDE.md`. Feed any new failure mode encountered back into the Troubleshooting table below, per [[Standard Work - Coded Microsite Delivery]]'s Continuous Improvement principle.
+Note the run (source deliverable(s) ported, routes created, any deltas from this SOP) in the project's session log or `CLAUDE.md`. Feed any new failure mode encountered back into the Troubleshooting table below, per [[Standard Work - Coded Microsite Delivery]]'s Continuous Improvement principle. If the requester asks for this SOP suite itself to be regenerated or revised, treat that as a live continuous-improvement trigger, not a from-scratch task — check what changed since the last version before rewriting.
 
 **Exit test:** run logged; new failure modes (if any) captured for the next revision.
 
@@ -165,8 +169,10 @@ PHASE 7: Cross-Link Routes → PHASE 8: Deliver, Persist & Record → PHASE 9: L
 |---|---|---|
 | Write/Edit tool calls fail with a hook error before any file changes | A broken PreToolUse hook script (e.g. pointing at a path with an unquoted space) errors on every call | Use Bash heredocs (`cat > file << 'EOF'`, quoted delimiter) or inline `python3` scripts for writes/edits; flag the broken hook to the requester rather than silently routing around it forever |
 | A button/CTA visually has no horizontal padding | A guessed Tailwind decimal spacing class (e.g. `px-6.5`, `gap-4.5`) isn't in the default scale and silently emits no CSS | Use arbitrary-value syntax matching the source's exact px value (`px-[26px]`); verify via `getComputedStyle` |
+| Two inline items (pills, tags) touch with no gap between them | They wrapped onto separate lines inside a narrow container, and only a one-directional margin (`mr-2`) was set — nothing for the wrapped/vertical case | Wrap the group in a flex container with `gap-2`, which spaces correctly on both axes regardless of wrap state |
 | A programmatic slide/carousel transition gets stuck a few pixels into the scroll | `scroll-snap-type: mandatory` + `scrollTo({behavior:'smooth'})` — the snap logic cancels the in-flight animation | Rebuild the transition on a CSS `transform: translateX()` track driven by component state instead of native scroll |
 | A click on a button/link appears to do nothing | Screenshot-coordinate click landed on the wrong element because the screenshot's pixel space didn't match the live viewport | Use `read_page` to get the element's ref, click by ref, not by eyeballed coordinates |
 | Screenshot returns a blank white image partway down a page | Known rendering-tool quirk at non-zero scroll depth, not a content bug | Confirm via `get_page_text` and `getComputedStyle`; reload the tab to recover the renderer if screenshots stay blank even at the top |
 | `next dev` fails to start: "Another next dev server is already running" | A stray `next-server` process from an earlier preview session wasn't fully stopped | `ps aux \| grep next-server`, confirm it belongs to this project, `kill` it, then retry |
 | A ported page's brand colors look off from the source | A token was eyeballed instead of copied from the token source | Re-derive every `tailwind.config.ts` color directly from the token source's hex table; never approximate by eye |
+| `gh pr create` fails or would target a branch into itself | The working branch already equals the repo's tracked default branch, so there's no valid head/base pair | Create a feature branch before committing (Step 0.4), or before Phase 8 if this was missed earlier |
