@@ -52,6 +52,12 @@ The fill-in starting structure for a new coded port. Copy this file manifest and
 | | | |
 | | | |
 
+## Pre-Flight Checklist
+
+- [ ] Working branch confirmed *not* equal to the repo's tracked default branch (or a feature branch created before Phase 1)
+- [ ] Reference project's config and component list read, not just copied blind
+- [ ] Token source's hex table has an evidence + fidelity-flag column filled in for every entry
+
 ## Known Gaps Checklist (carry forward from the brand kit / token source)
 
 - [ ] Logo is a reconstruction stand-in — official vector requested?
@@ -59,3 +65,4 @@ The fill-in starting structure for a new coded port. Copy this file manifest and
 - [ ] Brand face substituted with a Google Fonts stand-in — noted in README?
 - [ ] All internal navigation links (logo → home, CTAs → routes) wired and verified via `location.pathname`?
 - [ ] Any rebuilt interaction checked against the known non-portable `scroll-snap` + `smooth scrollTo` pattern?
+- [ ] Any wrap-capable inline-element group (pills, tags) checked for spacing at a narrow viewport, not only a wide one?
